@@ -100,7 +100,7 @@ pipeline {
   stages {
     stage('Build App') {
       steps {
-        git credentialsId: 'gitlabLogin', url: 'http://ec2-52-61-185-13.us-gov-west-1.compute.amazonaws.com/root/OpenShift.git', branch: "master"
+        git branch: 'master', url: 'http://ec2-52-61-185-13.us-gov-west-1.compute.amazonaws.com/root/OpenShift.git'
         sh "mvn clean package -Popenshift"
         stash name:"war", includes:"target/AirforceClub.war"
       }
