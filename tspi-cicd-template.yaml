@@ -100,8 +100,8 @@ pipeline {
   stages {
     stage('Build App') {
       steps {
-        git branch: 'master', url: 'http://ec2-52-61-185-13.us-gov-west-1.compute.amazonaws.com/root/OpenShift.git'
-        sh "mvn clean package -Popenshift"
+        git branch: 'eap-7', url: 'http://gogs:3000/gogs/openshift-tasks.git'
+        sh "${mvnCmd} clean package -Popenshift"
         stash name:"war", includes:"target/AirforceClub.war"
       }
     }
